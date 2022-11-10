@@ -65,7 +65,7 @@ VALUES (
         -- Muito cuidado com a ordem e a quantidade de dados,
         -- elas devem coincidir com os campos acima.
         '1',
-        'Joca da Silva',
+        'Joca da Silva de Souza',
         'joca@silva.com',
         -- A senha será criptografada pela função SHA1 antes de ser inserida.
         SHA1('senha123'),
@@ -233,6 +233,22 @@ CREATE TABLE contacts (
     message TEXT NOT NULL,
     status ENUM ('sended', 'readed', 'responded', 'deleted') DEFAULT 'sended'
 );
+-- Cria a tabela "config":
+CREATE TABLE config (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    var VARCHAR(127) NOT NULL,
+    val LONGTEXT NOT NULL
+);
+-- Insere dados na tabela "config":
+INSERT INTO config (var, val)
+VALUES ('sitename', 'Tech.Novatas'),
+    (
+        'siteslogan',
+        'Toda mulher é capaz de tudo, inclusive programar.'
+    ),
+    ('sitelogo', '/img/logo01.png'),
+    ('favicon', '/img/favicon.png'),
+    ('sitecss', '/style.css');
 -- CRIANDO E TESTANDO:
 -- Selecione todo este conteúdo teclando [Ctrl]+[A];
 -- Copie o conteúdo para a área de transferência teclando [Ctrl]+[C];
@@ -240,7 +256,7 @@ CREATE TABLE contacts (
 -- Clique na guia [SQL] na porção esquerda;
 -- Cole o código no campo, teclando [Ctrl]+[V];
 -- Verifique se ocorreram erros de sintaxe.
---     Aparece um "X" dentro de uma bola vermelha quando ocorrem.
+-- Aparece um "X" dentro de uma bola vermelha quando ocorrem.
 -- Clique no botão [Continuar] que está logo abaixo;
 -- Verifique se não ocorrem erros.
 -- Atualize a página para ver se o banco foi corretamente criado, juntamente
